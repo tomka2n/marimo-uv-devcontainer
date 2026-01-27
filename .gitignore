@@ -1,0 +1,7 @@
+# uv cache & python
+.cache/
+.python-version
+
+# 各プロジェクトの実体（プロジェクトごとに別リポジトリにするため）
+projects/*
+!projects/.gitkeep

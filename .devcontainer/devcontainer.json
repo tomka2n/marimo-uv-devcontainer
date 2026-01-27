@@ -1,0 +1,53 @@
+{
+    "name": "Python-with-marimo-env",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "VARIANT": "3.12-bookworm",
+            "UV_VERSION": "0.9.26",
+            "MARIMO_VERSION": "latest",
+            "RUFF_VERSION": "latest",
+            "TY_VERSION": "latest",
+            // uv であらかじめインストールしておくpythonのバージョン：
+            //   スペース区切りで複数のpythonバージョンを指定可
+            "PYTHON_VERSION": "3.12"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "marimo-team.vscode-marimo",
+                "charliermarsh.ruff",
+                "astral-sh.ty"
+            ],
+            "settings": {
+                "marimo.path": "/home/vscode/.local/bin/marimo",
+                "ruff.path": "/home/vscode/.local/bin/ruff",
+                "ty.path": "/home/vscode/.local/bin/ty",
+                // Python ファイル専用の設定
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll.ruff": "never", // 自動修正しない 指摘を確認したいので
+                        "source.organizeImports.ruff": "always" // インポート自動整理
+                    }
+                }
+            }
+        }
+    },
+    // メインの作業ディレクトリ設定
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    // uvキャッシュの永続化設定
+    "mounts": [
+        "source=uv-cache,target=/home/vscode/.cache/uv,type=volume"
+    ],
+    "runArgs": [
+        "--privileged",
+        "-v",
+        "/dev/bus/usb:/dev/bus/usb"
+    ],
+    "forwardPorts": [8754],
+    "remoteUser": "vscode"
+}
