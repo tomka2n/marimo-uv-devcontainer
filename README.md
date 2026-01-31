@@ -18,3 +18,16 @@ A modern, high-performance Python development environment for **marimo** noteboo
 ├── projects/          # Your project directories (independent Git repos)
 └── .gitignore         # Configured to keep your host clean
 ```
+
+## 🛠️ Getting Started
+
+1. Open this folder in VS Code.
+1. Click **"Reopen in Container"** when prompted.
+1. Move to the projects folder: `cd projects`.
+1. Create a new project: `mkdir my-project && cd my-project`.
+1. Initialize with uv: `uv init`.
+1. Start marimo: `marimo edit`.
+
+## ⚙️ Customization
+
+You can change tool versions (e.g., Python, uv, marimo) by modifying the `args` section in `.devcontainer/devcontainer.json` and rebuilding the container.
