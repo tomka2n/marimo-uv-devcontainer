@@ -21,9 +21,10 @@
                 "astral-sh.ty"
             ],
             "settings": {
-                "marimo.path": "/home/vscode/.local/bin/marimo",
-                "ruff.path": "/home/vscode/.local/bin/ruff",
-                "ty.path": "/home/vscode/.local/bin/ty",
+                "marimo.path": ["/home/vscode/.local/bin/marimo"],
+                "ruff.path": ["/home/vscode/.local/bin/ruff"],
+                "ty.path": ["/home/vscode/.local/bin/ty"],
+                "python.analysis.typeCheckingMode": "standard",
                 // Python ファイル専用の設定
                 "[python]": {
                     "editor.defaultFormatter": "charliermarsh.ruff",
